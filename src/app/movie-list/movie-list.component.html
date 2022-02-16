@@ -1,1 +1,31 @@
-<p>movie-list works!</p>
+<div style="padding: 20px;">
+  <h2>Movies In Database</h2>
+
+  <div style="margin: auto auto; width: 70%; margin-top: 20px">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Genre</th>
+          <th>Release Year</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let m of movieList">
+          <td>{{m.id}}</td>
+          <td>{{m.name}}</td>
+          <td>{{m.description}}</td>
+          <td>{{m.genre}}</td>
+          <td>{{m.publishedYear}}</td>
+
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
