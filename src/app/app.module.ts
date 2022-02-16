@@ -16,7 +16,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
   declarations: [
     AppComponent,
 
-    NavBarComponent
+    NavBarComponent,
 
     MovieListComponent
 
@@ -26,7 +26,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
     AppRoutingModule,
 
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
 
     HttpClientModule // used for doing API calls
 
