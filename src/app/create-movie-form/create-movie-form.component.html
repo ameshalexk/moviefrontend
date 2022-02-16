@@ -1,0 +1,93 @@
+<p>create-book-form works!</p>
+<div style="margin-top:20px;" > 
+    <h2>Create Movie Form</h2>
+    
+    
+    <form [formGroup]="myForm"
+    (submit)="onSubmit(myForm)"
+    style="width: 70%; margin: auto auto; margin-top: 20 px;">
+        <div class="mb-3">
+            <div class="mb-3">
+                <label for="title" 
+                       class="form-label">
+                    Title
+                </label>
+                <input type="text" 
+                       class="form-control" 
+                       id="title"
+                       formControlName="title">
+    
+              </div *ngIf="validField('title')"
+              class="form-text"
+              style="color: red;">
+              Movie title must be at least 3 characters long
+              <div>
+              </div>
+    
+      
+              <div class="mb-3">
+                  <label for="description" 
+                         class="form-label">
+                      Description
+                  </label>
+                  <input type="text" 
+                         class="form-control" 
+                         id="description"
+                         formControlName="description">
+              </div>
+    
+      
+              <div class="mb-3">
+                  <label for="genre" 
+                         class="form-label">
+                    Genre
+                  </label>
+                  <input type="text" 
+                         class="form-control" 
+                         id="genre"
+                         formControlName="genre">
+                         </div *ngIf="validField('img')"
+                         <div nfIf*="myForm.hasError('pattern', 'img')"
+                            class="form-text"
+                            style="color: red;">
+                          Genre cannot be left blank
+                        </div>
+                         //class="form-text"
+                         //style="color: red;">
+                         //Url must start with http
+                        // <div>
+                          //  </div *ngIf="validField('img')"
+                            //class="form-text"
+                           // style="color: red;">
+                            //Url must be 7 characters long
+                            //<div>
+    
+    
+                  <div class="mb-3">
+                  <label for="yearpublished" 
+                         class="form-label">
+                     Year Published
+                  </label>
+                  <input type="text" 
+                         class="form-control" 
+                         id="yearpublished"
+                         formControlName="yearpublished">
+              </div>
+    
+              </div>
+    
+    
+         
+        </div>
+        // myForm.invalid - returns true if form is invalid
+        //below will disale the submit button until there are 
+        //valid values in your form
+        <button type="submit" 
+        class="btn btn-primary"
+        [disabled]="myForm.invalid">
+        Submit</button>
+      </form>
+    
+    
+    </div>
+    

@@ -5,11 +5,13 @@ import { environment } from 'src/environments/environment.prod';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { CreateMovieFormComponent } from './create-movie-form/create-movie-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    CreateMovieFormComponent
   ],
   imports: [
     BrowserModule,
