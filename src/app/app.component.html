@@ -1,10 +1,12 @@
 <mat-toolbar>
     <span>
-        <button color = "primary" mat-button>Home</button>
-        <button color = "primary" mat-button>Login</button>
-        <button color = "primary" mat-button>MyProgress</button>
-        <button color = "primary" mat-button>Movies</button>
+        <button color="primary" mat-button>Home</button>
+        <button color="primary" mat-button>Login</button>
+        <button color="primary" mat-button>MyProgress</button>
+        <button color="primary" mat-button routerLink="/">Movies</button>
     </span>
 </mat-toolbar>
-<app-movie-list></app-movie-list>
 
+<router-outlet></router-outlet>
+
+<!-- <app-movie-list></app-movie-list> -->

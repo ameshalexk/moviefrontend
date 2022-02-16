@@ -15,21 +15,16 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-
     NavBarComponent,
-
     MovieListComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     BrowserAnimationsModule,
     MaterialModule,
-
-    HttpClientModule // used for doing API calls
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
