@@ -1,4 +1,4 @@
-export class movielist { // This model MUST look like the model class in eclipse
+export class Movielist { // This model MUST look like the model class in eclipse
 
   // naming MUST be the EXACT same as Eclipse Model class.
   id: number;

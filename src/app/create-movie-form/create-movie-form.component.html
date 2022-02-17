@@ -1,0 +1,48 @@
+<div style="margin-top: 20px;" class="createForm">
+  <h2>
+    Create Book Form
+  </h2>
+
+  <form [formGroup]="myForm" style="width: 70%; margin: auto auto; margin-top: 20px;" (submit)="onSubmit(myForm)">
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" class="form-control" id="description" placeholder="Enter description"
+        formControlName="description">
+    </div>
+    <div class="form-text" style="color: red" *ngIf="validField('description')">
+      required field
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter name" formControlName="name">
+    </div>
+    <div class="form-text" style="color: red" *ngIf="validField('name')">
+      required field
+    </div>
+    <div class="mb-3">
+      <label for="genre" class="form-label">genre</label>
+      <input type="text" class="form-control" id="genre" placeholder="Enter genre" formControlName="genre">
+    </div>
+    <div class="form-text" style="color: red" *ngIf="validField('genre')">
+      required field
+    </div>
+
+
+
+    <div class="mb-3">
+      <label for="publishedYear" class="form-label">publishedYear</label>
+      <input type="text" class="form-control" id="publishedYear" placeholder="publishedYear"
+        formControlName="publishedYear">
+    </div>
+    <div *ngIf="validField('publishedYear')">
+      <div class="form-text" style="color: red" *ngIf="myForm.hasError('minLength', 'publishedYear')">
+        min length is 4
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+  </form>
+
+
+
+
+</div>

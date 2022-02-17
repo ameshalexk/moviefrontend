@@ -1,0 +1,23 @@
+<div style="margin-top: 20px;">
+  <h2>Login Form</h2>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username"
+        #usernameSelect="ngModel" required>
+      <div style="color:red;" class="form-text" *ngIf=" !usernameSelect.valid && usernameSelect.touched ">
+        Username cannot be blank
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"
+        #passwordSelect="ngModel" required>
+
+      <div style="color:red;" class="form-text" *ngIf=" !passwordSelect.valid && passwordSelect.touched ">
+        Password cannot be blank
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
