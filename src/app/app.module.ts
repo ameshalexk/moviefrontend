@@ -11,6 +11,7 @@ import { MaterialModule } from './material/material.module';
 
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MyProgressComponent } from './my-progress/my-progress.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 
     MovieListComponent,
     
-    HomePageComponent
+    HomePageComponent,
+          MyProgressComponent
 
   ],
   imports: [
