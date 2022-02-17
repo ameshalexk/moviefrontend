@@ -24,7 +24,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
