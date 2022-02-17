@@ -9,18 +9,33 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CreateMovieFormComponent } from './create-movie-form/create-movie-form.component';
 
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+
+import { MovieListComponent } from './movie-list/movie-list.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
     LoginComponent,
-    CreateMovieFormComponent
+    CreateMovieFormComponent,
+    NavBarComponent,
+    MovieListComponent,
+    HomePageComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     HttpClientModule
   ],
   providers: [],

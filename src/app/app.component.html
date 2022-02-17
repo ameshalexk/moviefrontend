@@ -1,3 +1,10 @@
-<!-- <app-movie-list></app-movie-list> -->
-<!-- <app-login></app-login> -->
-<app-create-movie-form></app-create-movie-form>
+<mat-toolbar>
+    <span>
+        <button color="primary" mat-button routerLink="/home" routerLinkActive="active">Home</button>
+        <button color="primary" mat-button routerLink="/login" routerLinkActive="active">Login</button>
+        <button color="primary" mat-button routerLink="/myprogress" routerLinkActive="active">MyProgress</button>
+        <button color="primary" mat-button routerLink="/movies" routerLinkActive="active">Movies</button>
+    </span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
