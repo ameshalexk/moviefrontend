@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { movielist } from '../app/movielist';
+import { Movielist } from '../app/movielist';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +13,18 @@ export class MovielistService {
   constructor(private http: HttpClient) { }
 
   getAllMovies() {
-    return this.http.get<movielist[]>(this.url)
+    return this.http.get<Movielist[]>(this.url)
   }
 
   getMovieById(id: number) {
-    return this.http.get<movielist>(this.url + "/" + id);
+    return this.http.get<Movielist>(this.url + "/" + id);
   }
 
-  addMovie(newMovie: movielist) {
+  addMovie(newMovie: Movielist) {
     return this.http.post(this.url, newMovie);
   }
 
-  updateMovie(updatedMovie: movielist) {
+  updateMovie(updatedMovie: Movielist) {
     return this.http.put(this.url, updatedMovie);
   }
 

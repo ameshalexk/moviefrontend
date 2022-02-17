@@ -7,19 +7,21 @@ import { AppComponent } from './app.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { CreateMovieFormComponent } from './create-movie-form/create-movie-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieListComponent,
-    LoginComponent
+    LoginComponent,
+    CreateMovieFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    //ReactiveFormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule // used for doing API calls
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
