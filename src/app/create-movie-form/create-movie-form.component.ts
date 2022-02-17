@@ -36,7 +36,7 @@ export class CreateMovieFormComponent implements OnInit {
           next: (response) => {
             console.log(response)
             form.reset();
-            this.router.navigate(['/home']);
+            this.router.navigate(['/movies']);
 
           },
           error: (error) => { console.log(error) }
