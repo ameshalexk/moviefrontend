@@ -10,14 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    MovieListComponent
-
+    MovieListComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
