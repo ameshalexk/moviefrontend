@@ -16,23 +16,16 @@ import { HomePageComponent } from './home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-
     NavBarComponent,
-
     MovieListComponent,
-    
     HomePageComponent
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     BrowserAnimationsModule,
     MaterialModule,
-
-    HttpClientModule // used for doing API calls
-
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

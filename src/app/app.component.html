@@ -1,6 +1,12 @@
-<app-nav-bar></app-nav-bar>
-<br><br>
-<app-home-page>
-</app-home-page>
-<!-- <app-movie-list></app-movie-list> -->
+<mat-toolbar>
+    <span>
+        <button color="primary" mat-button>Home</button>
+        <button color="primary" mat-button>Login</button>
+        <button color="primary" mat-button>MyProgress</button>
+        <button color="primary" mat-button routerLink="/">Movies</button>
+    </span>
+</mat-toolbar>
 
+<router-outlet></router-outlet>
+
+<!-- <app-movie-list></app-movie-list> -->
