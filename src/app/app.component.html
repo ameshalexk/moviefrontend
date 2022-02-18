@@ -1,11 +1,15 @@
 <mat-toolbar>
     <span>
         <button color="primary" mat-button routerLink="/home" routerLinkActive="active">Home</button>
-        <button color="primary" mat-button routerLink="/login" routerLinkActive="active">Login</button>
+        <button color="primary" *ngIf='!(authService.isLoggedIn$ | async )' mat-button routerLink="/login"
+            routerLinkActive="active">Login</button>
         <button color="primary" mat-button routerLink="/myprogress" routerLinkActive="active">MyProgress</button>
         <button color="primary" mat-button routerLink="/movies" routerLinkActive="active">Movies</button>
-        <button color="primary" mat-button routerLink="/create" routerLinkActive="active">Create</button>
+        <button color="primary" *ngIf='authService.isAdmin$ | async' mat-button routerLink="/create"
+            routerLinkActive="active">Create</button>
+        <button color="primary" *ngIf='authService.isLoggedIn$ | async' mat-button routerLink="/home"
+            (click)="authService.logout()">Logout</button>
     </span>
 </mat-toolbar>
-
+<!-- {{authService.}} -->
 <router-outlet></router-outlet>

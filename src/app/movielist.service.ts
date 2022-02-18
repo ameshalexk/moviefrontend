@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Movielist } from '../app/movielist';
 
 
@@ -13,8 +13,12 @@ export class MovielistService {
 
   constructor(private http: HttpClient) { }
 
-  getAllMovies() {
-    return this.http.get<Movielist[]>(this.url)
+  getAllMovies(token: any) {
+    console.log("***TOKEN*** " + token)
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set("Authorization", tokenStr);
+
+    return this.http.get<Movielist[]>(this.url, { headers });
   }
 
   getMovieById(id: number) {
