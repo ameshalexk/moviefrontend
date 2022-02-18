@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-my-progress',
   templateUrl: './my-progress.component.html',
@@ -30,6 +31,7 @@ export class MyProgressComponent implements OnInit {
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
+    
   }
 
 }
