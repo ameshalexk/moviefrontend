@@ -5,6 +5,10 @@ import {MatIconModule} from '@angular/material/icon'
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatGridListModule} from '@angular/material/grid-list'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatExpansionModule} from '@angular/material/expansion'
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatInputModule} from '@angular/material/input'
 
 const MaterialComponents = [
   MatButtonModule,
@@ -12,7 +16,11 @@ const MaterialComponents = [
   MatIconModule,
   MatToolbarModule,
   MatGridListModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatCheckboxModule,
+  MatExpansionModule,
+  MatFormFieldModule,
+  MatInputModule
 ]
 
 @NgModule({

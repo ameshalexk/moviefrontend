@@ -5,3 +5,12 @@ mat-grid-tile{
     font-weight: 500;
     float: right;
 }
+
+mat-progress-spinner{
+    left : 80%;
+    top: 2.1%
+}
+
+mat-panel-description{
+    
+}
