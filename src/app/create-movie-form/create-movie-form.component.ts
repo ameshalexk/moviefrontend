@@ -10,12 +10,14 @@ import { MovielistService } from '../movielist.service';
   styleUrls: ['./create-movie-form.component.css']
 })
 export class CreateMovieFormComponent implements OnInit {
+  public value: any = null;
 
   myForm: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder, private movieService: MovielistService, private router: Router) { }
 
   ngOnInit(): void {
+    this.value = localStorage.getItem('profanis_auth');
     this.myForm = this.fb.group({
       description: ['', [Validators.required]],
       genre: ['', Validators.required],
@@ -26,12 +28,7 @@ export class CreateMovieFormComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     if (form.valid) {
-      console.log('Valid?' + form.valid);
-      console.log('title' + form.value.title);
-      console.log('author' + form.value.description);
-      console.log('img' + form.value.genre);
-
-      this.movieService.addMovie(new Movielist(0, form.value.description, form.value.genre, form.value.name, form.value.publishedYear))
+      this.movieService.addMovie(new Movielist(0, form.value.description, form.value.genre, form.value.name, form.value.publishedYear), this.value)
         .subscribe({
           next: (response) => {
             console.log(response)

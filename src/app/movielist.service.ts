@@ -25,8 +25,14 @@ export class MovielistService {
     return this.http.get<Movielist>(this.url + "/" + id);
   }
 
-  addMovie(newMovie: Movielist) {
-    return this.http.post(this.url, newMovie);
+  addMovie(newMovie: Movielist, token: any) {
+
+    console.log("***TOKEN*** " + token)
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set("Authorization", tokenStr);
+
+
+    return this.http.post(this.url, newMovie, { headers });
   }
 
   updateMovie(updatedMovie: Movielist) {
