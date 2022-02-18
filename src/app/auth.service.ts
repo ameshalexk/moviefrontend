@@ -7,6 +7,9 @@ import { ApiService } from './api.service';
   providedIn: 'root',
 })
 export class AuthService {
+
+  private loggedIn: boolean = false;
+
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
   private _isAdmin$ = new BehaviorSubject<boolean>(false);
@@ -23,6 +26,7 @@ export class AuthService {
       tap((response: any) => {
         const tokenName = JSON.parse(atob(response.jwt.split('.')[1]));
         this._isLoggedIn$.next(true);
+        this.loggedIn = true;
         localStorage.setItem('profanis_auth', response.jwt);
         if (tokenName.sub === 'adminj3') {
           this._isAdmin$.next(true);
@@ -33,6 +37,7 @@ export class AuthService {
   }
 
   logout() {
+    this.loggedIn = false;
     this._isLoggedIn$.next(false);
     this._isAdmin$.next(false);
     localStorage.removeItem('profanis_auth');

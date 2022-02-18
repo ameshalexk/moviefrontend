@@ -14,7 +14,8 @@ export class MovielistService {
   constructor(private http: HttpClient) { }
 
   getAllMovies(token: any) {
-    let tokenStr = 'Bearer ' + token;
+    console.log("***TOKEN*** " + token)
+    const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set("Authorization", tokenStr);
 
     return this.http.get<Movielist[]>(this.url, { headers });
