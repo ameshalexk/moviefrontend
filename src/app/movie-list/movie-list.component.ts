@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MovielistService } from '../movielist.service';
 import { AuthService } from '../auth.service';
 
+const value = localStorage.getItem('profanis_auth')
+
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
@@ -49,7 +51,7 @@ export class MovieListComponent implements OnInit {
 
 
     if (this.checks) {
-      this.movieListService.getAllMovies().subscribe({
+      this.movieListService.getAllMovies(value).subscribe({
         next: (response) => {
           this.movieList = response
         }, // succeeds
