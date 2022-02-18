@@ -1,1 +1,49 @@
-<p>my-progress works!</p>
+<h1 style="padding-left: 1%;">{{myProgressTitle}}</h1>
+<mat-accordion>
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            MovieTitle1
+        </mat-panel-title>
+        <mat-panel-description style="text-align: center">
+            Total Duration: {{movieDuration}} hours
+            <mat-progress-spinner diameter="45" value = {{displayVal}}></mat-progress-spinner>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>description</p>
+    <mat-action-row>
+        <mat-form-field>
+            <mat-label>Enter hours watched</mat-label>
+            <input matInput 
+            type = "number"
+            min = 0
+            max = 100
+            [(ngModel)]="displayVal">
+        </mat-form-field>
+        <!--<button mat-button on-click="getValue(displayVal)">Track</button>!-->
+    </mat-action-row>
+</mat-expansion-panel>
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            MovieTitle1
+        </mat-panel-title>
+        <mat-panel-description>
+            Total Duration: {{movieDuration}} hours
+            <mat-progress-spinner diameter="45" value={{displayVal2}}></mat-progress-spinner>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>description</p>
+    <mat-action-row>
+        <mat-form-field>
+            <mat-label>Enter hours watched</mat-label>
+            <input matInput 
+            type = "text"
+            min = 0
+            max = 100
+            [(ngModel)]="displayVal2">
+        </mat-form-field>
+        <!--<button mat-button on-click="getValue2(displayVal2)">Track</button>!-->
+    </mat-action-row>
+</mat-expansion-panel>
+</mat-accordion>
