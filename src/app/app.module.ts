@@ -15,6 +15,7 @@ import { MaterialModule } from './material/material.module';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { MyProgressComponent } from './my-progress/my-progress.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     NavBarComponent,
     MovieListComponent,
     HomePageComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    MyProgressComponent
   ],
   imports: [
     BrowserModule,
