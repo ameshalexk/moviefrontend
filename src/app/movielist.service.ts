@@ -14,15 +14,20 @@ export class MovielistService {
   constructor(private http: HttpClient) { }
 
   getAllMovies(token: any) {
-    console.log("***TOKEN*** " + token)
+    // console.log("***TOKEN*** " + token)
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set("Authorization", tokenStr);
 
     return this.http.get<Movielist[]>(this.url, { headers });
   }
 
-  getMovieById(id: number) {
-    return this.http.get<Movielist>(this.url + "/" + id);
+  getMovieById(id: number, token: any) {
+    // console.log("***TOKEN*** " + token)
+    const tokenStr = 'Bearer ' + token;
+    const headers = new HttpHeaders().set("Authorization", tokenStr);
+
+
+    return this.http.get<Movielist>(this.url + "/" + id, { headers });
   }
 
   addMovie(newMovie: Movielist, token: any) {

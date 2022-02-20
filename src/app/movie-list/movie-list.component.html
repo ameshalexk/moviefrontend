@@ -29,3 +29,41 @@
 
   </div>
 </div>
+
+<!-- <button (click)="addChecked()"> Submit
+</button>
+<br><br> -->
+
+<ng-container *ngFor="let i of movieList">
+  <li>
+    s{{i.id}}
+    {{i.name}}
+    {{i.description}}
+    {{i.genre}}
+    {{i.year}}
+    {{i.checked}}
+
+    <input type="checkbox" id={{i.id}} name={{i.name}} #isChecked (click)="onCheck(isChecked)">
+
+    <ng-container *ngIf="selected.includes(i.id)">
+      <input type="radio" value=1{{i.id}} name="statuses{{i.name}} " id="1{{i.name}}" [(ngModel)]="user">
+      COMPLETED
+      <input type="radio" value=2{{i.id}} name="statuses{{i.name}} " id="2{{i.name}}" [(ngModel)]="user">
+      IN_PROGRESS
+      <input type="radio" value=3{{i.id}} name="statuses{{i.name}} " id="3{{i.name}}" [(ngModel)]="user">
+      NOT_STARTED
+    </ng-container>
+
+  </li>
+</ng-container>
+
+<br><br>
+<button (click)="onSave(selected)"> Submit
+</button>
+<br><br>
+<button (click)="getUserId()"> Get user ID
+</button>
+<br><br>
+
+
+value = {{user}}

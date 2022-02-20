@@ -31,6 +31,9 @@ export class AuthService {
         if (tokenName.sub === 'adminj3') {
           this._isAdmin$.next(true);
           localStorage.setItem('admin', tokenName.sub);
+        } else {
+          localStorage.setItem('username', tokenName.sub);
+
         }
       })
     );
