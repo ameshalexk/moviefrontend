@@ -1,23 +1,149 @@
-<div style="margin-top: 20px;">
-  <h2>Login Form</h2>
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-    <div class="mb-3">
-      <label for="username" class="form-label">Username</label>
-      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="username"
-        #usernameSelect="ngModel" required>
-      <div style="color:red;" class="form-text" *ngIf=" !usernameSelect.valid && usernameSelect.touched ">
-        Username cannot be blank
-      </div>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password"
-        #passwordSelect="ngModel" required>
+<!DOCTYPE html>
+<html lang="en">
 
-      <div style="color:red;" class="form-text" *ngIf=" !passwordSelect.valid && passwordSelect.touched ">
-        Password cannot be blank
+<head>
+  <title> Login Form </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .carousel-inner img {
+      width: 100%;
+      /* Set width to 100% */
+      margin: auto;
+      min-height: 200px;
+    }
+
+    /* Hide the carousel text when the screen is less than 600 pixels wide */
+    @media (max-width: 600px) {
+      .carousel-caption {
+        display: none;
+      }
+
+      body {
+        font: 400 15px Lato, sans-serif;
+        line-height: 1.8;
+        color: #818181;
+      }
+
+      h2 {
+        font-size: 24px;
+        text-transform: uppercase;
+        color: #303030;
+        font-weight: 600;
+        margin-bottom: 30px;
+      }
+
+      h4 {
+        font-size: 19px;
+        line-height: 1.375em;
+        color: #303030;
+        font-weight: 400;
+        margin-bottom: 30px;
+      }
+
+
+      .container-fluid {
+        padding: 60px 50px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <nav class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Trackflix</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
       </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a
+              href="C:\denellwilliams\Angular_Workspace\JumpFinalProject\moviefrontend\homepagestylefinalversion.html">Home</a>
+          </li>
+          <li><a href="C:\denellwilliams\Angular_Workspace\JumpFinalProject\moviefrontend\progresspage.html">My
+              Progess</a></li>
+          <li><a href="C:\denellwilliams\Angular_Workspace\JumpFinalProject\moviefrontend\moviespage.html">Movies</a>
+          </li>
+          <li><a
+              href="C:\denellwilliams\Angular_Workspace\JumpFinalProject\moviefrontend\createamoviefinalversion.html">Create</a>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="C:\denellwilliams\Angular_Workspace\JumpFinalProject\moviefrontend\createnewuser.html"><span
+                class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="C:\denellwilliams\Angular_Workspace\JumpFinalProject\moviefrontend\login form.html"><span
+                class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+        </ul>
+
+
+      </div>
+
+
+    </nav>
+
+
+    <div class="container">
+      <h2>User Login </h2>
+      <form class="form-horizontal" action="/action_page.php">
+        <form action="/action_page.php">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Email:</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Password:</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </div>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+
+
+
+
+</body>
+
+</html>
