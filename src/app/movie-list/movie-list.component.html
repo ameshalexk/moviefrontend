@@ -36,7 +36,7 @@
 
 <ng-container *ngFor="let i of movieList">
   <li>
-    s{{i.id}}
+    {{i.id}}
     {{i.name}}
     {{i.description}}
     {{i.genre}}
@@ -44,13 +44,16 @@
     {{i.checked}}
 
     <input type="checkbox" id={{i.id}} name={{i.name}} #isChecked (click)="onCheck(isChecked)">
-
-    <ng-container *ngIf="selected.includes(i.id)">
-      <input type="radio" value=1{{i.id}} name="statuses{{i.name}} " id="1{{i.name}}" [(ngModel)]="user">
+    <!-- {{selected2.includes(i.id)}} -->
+    <ng-container *ngIf="selected2.includes(i.id)">
+      <input type="radio" value=COMPLETED{{i.id}} name="statuses{{i.name}}" id="1{{i.id}}"
+        (click)="onClicked(checkedVal)" [(ngModel)]="checkedVal">
       COMPLETED
-      <input type="radio" value=2{{i.id}} name="statuses{{i.name}} " id="2{{i.name}}" [(ngModel)]="user">
+      <input type="radio" value=IN_PROGRESS{{i.id}} name="statuses{{i.name}}" checked id="2{{i.id}}"
+        (click)="onClicked(checkedVal)" [(ngModel)]="checkedVal">
       IN_PROGRESS
-      <input type="radio" value=3{{i.id}} name="statuses{{i.name}} " id="3{{i.name}}" [(ngModel)]="user">
+      <input type="radio" value=NOT_STARTED{{i.id}} name="statuses{{i.name}} " checked id="3{{i.id}}"
+        (click)="onClicked(checkedVal)" [(ngModel)]="checkedVal">
       NOT_STARTED
     </ng-container>
 
@@ -61,9 +64,10 @@
 <button (click)="onSave(selected)"> Submit
 </button>
 <br><br>
-<button (click)="getUserId()"> Get user ID
-</button>
+<!-- <button (click)="getUserId()"> Get user ID
+</button> -->
 <br><br>
 
-
-value = {{user}}
+{{selected2 | json}}
+{{checkedVal | json}}
+<!-- value = {{user}} -->

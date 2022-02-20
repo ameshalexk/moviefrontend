@@ -17,7 +17,7 @@ export class MovieListComponent implements OnInit {
   public usernameValue: any = null;
   public checked: any = null;
   public final: any = {};
-  public user: string = '';
+  public checkedVal: any = 'IN_PROGRESS';
 
   public movieList: any = [ // Test Data: MUST match fields in Eclipse model
     {
@@ -102,9 +102,11 @@ export class MovieListComponent implements OnInit {
 
 
   onCheck(val: any) {
-    const index = this.selected2.indexOf(parseInt(val.name));
+    const index = this.selected2.indexOf(parseInt(val.id));
+    // console.log(val)
     if (val.checked && index === -1) {
-      this.selected2.push(parseInt(val.name));
+      this.selected2.push(parseInt(val.id));
+      console.log(this.selected2)
       this.movieListService.getMovieById(val.id, this.value).subscribe({
         next: (response) => {
           this.selected.push(response)
@@ -115,9 +117,9 @@ export class MovieListComponent implements OnInit {
       });
     } else {
       if (index > -1 && !val.checked) {
-        console.log(this.selected)
+        // console.log(this.selected)
 
-        console.log(this.selected2)
+        // console.log(this.selected2)
 
         this.selected.splice(index, 1);
         this.selected2.splice(index, 1);
@@ -131,10 +133,12 @@ export class MovieListComponent implements OnInit {
 
 
 
-  onCLicked(vals: any) {
-    console.log(this.user)
+  onClicked(vals: any) {
+    console.log(this.checkedVal)
   }
   onSave(val: any) {
+    console.log(val)
+    console.log(this.selected)
     // val.map((e: any, idx: number) => {
     //   this.final['movie'] = e;
 
@@ -197,7 +201,8 @@ export class MovieListComponent implements OnInit {
           // this.selected.push(response)
           console.log(response)
           obj['user'] = response;
-          obj['progress'] = 'COMPLETED';
+          obj['progress'] = this.checkedVal;
+          console.log(this.checkedVal)
 
           this.usermovies.addUserMovie(obj, this.value).subscribe({
             next: (response) => {
