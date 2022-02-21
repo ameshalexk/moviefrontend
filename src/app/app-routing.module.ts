@@ -5,6 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { LoginComponent } from './login/login.component';
 import { CreateMovieFormComponent } from './create-movie-form/create-movie-form.component';
+import { MyProgressComponent } from './my-progress/my-progress.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateMovieFormComponent,
+  },
+  {
+    path: 'myprogress',
+    component: MyProgressComponent,
   },
   {
     path: '**',

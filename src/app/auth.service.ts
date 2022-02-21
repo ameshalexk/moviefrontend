@@ -28,7 +28,7 @@ export class AuthService {
         this._isLoggedIn$.next(true);
         this.loggedIn = true;
         localStorage.setItem('profanis_auth', response.jwt);
-        if (tokenName.sub === 'adminj3') {
+        if (tokenName.sub === 'adminj3' || 'admin') {
           this._isAdmin$.next(true);
           localStorage.setItem('admin', tokenName.sub);
         } else {

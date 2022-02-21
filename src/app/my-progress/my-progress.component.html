@@ -1,0 +1,54 @@
+<h1 style="padding-left: 1%;">{{myProgressTitle}}</h1>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let u of usersMovie">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <td>{{u.movie.name}}</td>
+      </mat-panel-title>
+      <mat-panel-description style="text-align: center">
+        Published Year: {{u.movie.publishedYear}}
+        <mat-progress-spinner diameter="45" value={{displayVal}}></mat-progress-spinner>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>description</p>
+    <mat-action-row>
+      <mat-form-field>
+        <mat-label>Enter hours watched</mat-label>
+        <input matInput type="number" min=0 max=100 [(ngModel)]="displayVal">
+      </mat-form-field>
+      <!--<button mat-button on-click="getValue(displayVal)">Track</button>!-->
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<!-- <div *ngFor="let u of usersMovie">
+  <ul>
+    <li>{{u.movie.name}}</li>
+    <li>{{u.progress}}</li>
+  </ul>
+</div> -->
+
+
+<!-- <table class="mytable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Genre</th>
+      <th>Release Year</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let u of usersMovie">
+      <td>{{u.movie.name}}</td>
+      <td>{{u.movie.description}}</td>
+      <td>{{u.movie.genre}}</td>
+      <td>{{u.movie.publishedYear}}</td>
+      <td>{{u.progress === 'COMPLETED' ? 'Completed' : u.progress === 'NOT_STARTED' ? 'Not yet started' : "In
+        Progress"}} </td>
+    </tr>
+  </tbody>
+
+</table> -->
