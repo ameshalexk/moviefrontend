@@ -44,30 +44,67 @@
     {{i.checked}}
 
     <input type="checkbox" id={{i.id}} name={{i.name}} #isChecked (click)="onCheck(isChecked)">
-    <!-- {{selected2.includes(i.id)}} -->
-    <ng-container *ngIf="selected2.includes(i.id)">
-      <input type="radio" value=COMPLETED{{i.id}} name="statuses{{i.name}}" id="1{{i.id}}"
+    <!-- <ng-container *ngIf="selected2.includes(i.id)">
+      <input type="radio" value=COMPLETED%{{i.id}} name="statuses{{i.name}}" id="1{{i.id}}"
         (click)="onClicked(checkedVal)" [(ngModel)]="checkedVal">
       COMPLETED
-      <input type="radio" value=IN_PROGRESS{{i.id}} name="statuses{{i.name}}" checked id="2{{i.id}}"
-        (click)="onClicked(checkedVal)" [(ngModel)]="checkedVal">
+      <input type="radio" value=IN_PROGRESS%{{i.id}} name="statuses{{i.name}}" checked id="2{{i.id}}"
+        (click)="onClicked(checkedVal)" checked [(ngModel)]="checkedVal">
       IN_PROGRESS
-      <input type="radio" value=NOT_STARTED{{i.id}} name="statuses{{i.name}} " checked id="3{{i.id}}"
+      <input type="radio" value=NOT_STARTED%{{i.id}} name="statuses{{i.name}} " id="3{{i.id}}"
         (click)="onClicked(checkedVal)" [(ngModel)]="checkedVal">
       NOT_STARTED
-    </ng-container>
+    </ng-container> -->
 
   </li>
 </ng-container>
 
 <br><br>
-<button (click)="onSave(selected)"> Submit
-</button>
+<!-- <button (click)="onSave(selected)"> Submit
+</button> -->
 <br><br>
 <!-- <button (click)="getUserId()"> Get user ID
 </button> -->
 <br><br>
 
-{{selected2 | json}}
-{{checkedVal | json}}
+<!-- {{selected2 | json}}
+{{checkedVal | json}} -->
 <!-- value = {{user}} -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+        <button type="button" (click)="closeModal()" class="btn" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3>Select Progress </h3>
+
+        <ng-container>
+          <input type="radio" value=COMPLETED name="statuses" id="1" (click)="onClicked(checkedVal)"
+            [(ngModel)]="checkedVal">
+          COMPLETED
+          <input type="radio" value=IN_PROGRESS name="statuses" checked id="2" (click)="onClicked(checkedVal)" checked
+            [(ngModel)]="checkedVal">
+          IN_PROGRESS
+          <input type="radio" value=NOT_STARTED name="statuses" id="3" (click)="onClicked(checkedVal)"
+            [(ngModel)]="checkedVal">
+          NOT_STARTED
+        </ng-container>
+
+        <button (click)="onSave(selected)"> Submit
+        </button>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>

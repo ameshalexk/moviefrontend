@@ -5,6 +5,9 @@ import { AuthService } from '../auth.service';
 import { UsersService } from '../users.service';
 import { UsermoviesService } from '../usermovies.service';
 
+declare var window: any;
+
+
 // const value = localStorage.getItem('profanis_auth')
 
 @Component({
@@ -40,6 +43,7 @@ export class MovieListComponent implements OnInit {
   public selected2: any = [];
   // checks: boolean = false;
   // public final: any = {};
+  public formModal: any;
 
   constructor(private movieListService: MovielistService, public authService: AuthService, public userService: UsersService, public usermovies: UsermoviesService) {
 
@@ -50,6 +54,22 @@ export class MovieListComponent implements OnInit {
     this.value = localStorage.getItem('profanis_auth');
     this.usernameValue = localStorage.getItem('admin');
     this.reloadMovieData();
+
+    // console.log(this.formModal)
+    this.formModal = new window.bootstrap.Modal(
+      document.getElementById("exampleModal")
+    );
+
+
+  }
+
+  openModal() {
+    // console.log(this.formModal)
+
+    this.formModal.show();
+  }
+  closeModal() {
+    this.formModal.hide();
   }
 
   reloadMovieData() {
@@ -102,6 +122,10 @@ export class MovieListComponent implements OnInit {
 
 
   onCheck(val: any) {
+    this.openModal()
+    console.log(val)
+    localStorage.setItem('modelval', val.id);
+
     const index = this.selected2.indexOf(parseInt(val.id));
     // console.log(val)
     if (val.checked && index === -1) {
@@ -135,10 +159,27 @@ export class MovieListComponent implements OnInit {
 
   onClicked(vals: any) {
     console.log(this.checkedVal)
+    // let a = this.checkedVal.split('%')
+    // console.log(a[0])
   }
   onSave(val: any) {
     console.log(val)
     console.log(this.selected)
+
+    this.closeModal();
+    let modelvalue: any = localStorage.getItem('modelval');
+    console.log(modelvalue)
+    let ast: any = document.getElementById(modelvalue);
+    if (ast.checked) {
+      console.log(ast)
+      console.log(ast.checked)
+      ast.checked = false;
+    }
+
+
+
+
+    // document.getElementById('modelvalue')
     // val.map((e: any, idx: number) => {
     //   this.final['movie'] = e;
 
@@ -201,7 +242,10 @@ export class MovieListComponent implements OnInit {
           // this.selected.push(response)
           console.log(response)
           obj['user'] = response;
-          obj['progress'] = this.checkedVal;
+          let a = this.checkedVal.split('%')
+          console.log(a[0])
+          obj['progress'] = a[0];
+
           console.log(this.checkedVal)
 
           this.usermovies.addUserMovie(obj, this.value).subscribe({
