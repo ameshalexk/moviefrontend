@@ -74,7 +74,7 @@ export class MyProgressComponent implements OnInit {
               console.log(valObj)
               if (this.userId === valObj) {
                 this.usersMovie.push(e)
-
+                console.log(e.progress)
               }
             })
           }, // succeeds
@@ -88,6 +88,20 @@ export class MyProgressComponent implements OnInit {
     });
   }
 
+  disCheck(e: any) {
+    // e.stopPropagation()
+    console.log(e._elementRef.nativeElement.id)
 
-
+    switch (e._elementRef.nativeElement.id) {
+      case 'COMPLETED':
+        return e.value = 100;
+        break;
+      case 'IN_PROGRESS':
+        return e.value = 50;
+        break;
+      default:
+        return e.value = 10;
+        break;
+    }
+  }
 }
