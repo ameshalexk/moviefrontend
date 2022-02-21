@@ -19,7 +19,7 @@ export class MovieListComponent implements OnInit {
   public value: any = null;
   public usernameValue: any = null;
   public checked: any = null;
-  public final: any = {};
+  public final: any = [];
   public checkedVal: any = 'IN_PROGRESS';
 
   public movieList: any = [ // Test Data: MUST match fields in Eclipse model
@@ -70,6 +70,32 @@ export class MovieListComponent implements OnInit {
   }
   closeModal() {
     this.formModal.hide();
+    console.log(this.selected)
+
+    let modelvalue: any = localStorage.getItem('modelval');
+    console.log(modelvalue)
+
+    this.selected.map((e: any) => {
+      console.log(e.movie.id)
+      console.log(modelvalue)
+      if (e.movie.id === parseInt(modelvalue)) {
+        e.progress = this.checkedVal;
+        console.log(e.progress)
+      }
+    })
+
+    // // console.log(modelvalue)
+    // let ast: any = document.getElementById(modelvalue);
+    // if (ast.checked) {
+    //   // console.log(ast)
+    //   // console.log(ast.checked)
+    //   ast.checked = false;
+    // }
+
+
+    // let finval = this.onCheck(this.selected);
+    // console.log(finval)
+
   }
 
   reloadMovieData() {
@@ -124,17 +150,57 @@ export class MovieListComponent implements OnInit {
   onCheck(val: any) {
     this.openModal()
     console.log(val)
+    let obj: any = {};
+
+    // console.log(val)
     localStorage.setItem('modelval', val.id);
 
     const index = this.selected2.indexOf(parseInt(val.id));
     // console.log(val)
     if (val.checked && index === -1) {
       this.selected2.push(parseInt(val.id));
-      console.log(this.selected2)
+      // console.log(this.selected2)
+
       this.movieListService.getMovieById(val.id, this.value).subscribe({
         next: (response) => {
-          this.selected.push(response)
-          console.log(this.selected)
+          // this.selected.push(response)
+
+          obj['movie'] = response;
+
+
+          let a = this.checkedVal.split('%')
+          // console.log(a[0])
+          obj['progress'] = a[0];
+
+          this.userService.getUserByName(this.usernameValue, this.value).subscribe({
+            next: (response) => {
+              // console.log("*** USER RESPONSE *** : " + response)
+              // this.selected.push(response)
+              console.log(response)
+              obj['user'] = response;
+              let a = this.checkedVal.split('%')
+              // console.log(a[0])
+              obj['progress'] = this.checkedVal;
+
+              console.log(this.checkedVal)
+
+              this.usermovies.addUserMovie(obj, this.value).subscribe({
+                next: (response) => {
+                  // console.log("*** usermovies RESPONSE *** : " + response)
+                  // console.log(val[i])
+
+                }, // succeeds
+                error: (error) => { console.log(error) }, // fails
+                // complete: () => (console.log("Completed")) //
+              });
+            }, // succeeds
+            error: (error) => { console.log(error) }, // fails
+            // complete: () => (console.log("Completed")) //
+          });
+
+
+
+          // console.log(this.selected)
         }, // succeeds
         error: (error) => { console.log(error) }, // fails
         // complete: () => (console.log("Completed")) //
@@ -149,6 +215,10 @@ export class MovieListComponent implements OnInit {
         this.selected2.splice(index, 1);
       }
     }
+    console.log(obj)
+    this.selected.push(obj);
+    console.log(this.selected)
+    return this.selected;
   }
 
 
@@ -158,7 +228,7 @@ export class MovieListComponent implements OnInit {
 
 
   onClicked(vals: any) {
-    console.log(this.checkedVal)
+    // console.log(this.checkedVal)
     // let a = this.checkedVal.split('%')
     // console.log(a[0])
   }
@@ -166,15 +236,16 @@ export class MovieListComponent implements OnInit {
     console.log(val)
     console.log(this.selected)
 
-    this.closeModal();
-    let modelvalue: any = localStorage.getItem('modelval');
-    console.log(modelvalue)
-    let ast: any = document.getElementById(modelvalue);
-    if (ast.checked) {
-      console.log(ast)
-      console.log(ast.checked)
-      ast.checked = false;
-    }
+
+    // this.closeModal();
+    // let modelvalue: any = localStorage.getItem('modelval');
+    // // console.log(modelvalue)
+    // let ast: any = document.getElementById(modelvalue);
+    // if (ast.checked) {
+    //   // console.log(ast)
+    //   // console.log(ast.checked)
+    //   ast.checked = false;
+    // }
 
 
 
@@ -218,7 +289,7 @@ export class MovieListComponent implements OnInit {
 
         this.usermovies.deleteUserMovieById(idVal.id, this.value).subscribe({
           next: (response) => {
-            console.log(response);
+            console.log("******deleted*******" + response);
           },
           error: (error) => { console.log(error) }
         })
@@ -229,41 +300,38 @@ export class MovieListComponent implements OnInit {
 
 
     for (let i = 0; i < val.length; i++) {
-      let obj: any = {};
-      obj['movie'] = val[i];
-      // console.log(obj)
+      // let obj: any = {};
+      // obj['movie'] = val[i];
+      console.log(val)
 
+      // this.userService.getUserByName(this.usernameValue, this.value).subscribe({
+      //   next: (response) => {
+      //     // console.log("*** USER RESPONSE *** : " + response)
+      //     // this.selected.push(response)
+      //     console.log(response)
+      //     obj['user'] = response;
+      //     let a = this.checkedVal.split('%')
+      //     // console.log(a[0])
+      //     obj['progress'] = a[0];
 
+      //     console.log(this.checkedVal)
 
-
-      this.userService.getUserByName(this.usernameValue, this.value).subscribe({
+      this.usermovies.addUserMovie(val[i], this.value).subscribe({
         next: (response) => {
-          // console.log("*** USER RESPONSE *** : " + response)
-          // this.selected.push(response)
+          // console.log("*** usermovies RESPONSE *** : " + response)
           console.log(response)
-          obj['user'] = response;
-          let a = this.checkedVal.split('%')
-          console.log(a[0])
-          obj['progress'] = a[0];
 
-          console.log(this.checkedVal)
-
-          this.usermovies.addUserMovie(obj, this.value).subscribe({
-            next: (response) => {
-              // console.log("*** usermovies RESPONSE *** : " + response)
-              // console.log(val[i])
-
-            }, // succeeds
-            error: (error) => { console.log(error) }, // fails
-            // complete: () => (console.log("Completed")) //
-          });
         }, // succeeds
         error: (error) => { console.log(error) }, // fails
         // complete: () => (console.log("Completed")) //
       });
+      // }, // succeeds
+      // error: (error) => { console.log(error) }, // fails
+      // complete: () => (console.log("Completed")) //
+      // });
       // console.log(this.final)
       // console.log(val)
-      const { movie, ...rest } = obj;
+      const { movie, ...rest } = val;
     }
   }
 

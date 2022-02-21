@@ -11,7 +11,7 @@ export class UsermoviesService {
 
 
   getUserMovies(token: any) {
-    console.log("***TOKEN*** " + token)
+    // console.log("***TOKEN*** " + token)
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set("Authorization", tokenStr);
 
@@ -19,7 +19,7 @@ export class UsermoviesService {
     return this.http.get(this.url, { headers });
   }
   custom(id: number, token: any) {
-    console.log("***TOKEN*** " + token)
+    // console.log("***TOKEN*** " + token)
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set("Authorization", tokenStr);
 
@@ -41,7 +41,7 @@ export class UsermoviesService {
 
   deleteUserMovieById(id: any, token: any) {
 
-    console.log("***TOKEN DELETEDDDDD*** " + token, id)
+    // console.log("***TOKEN DELETEDDDDD*** " + token, id)
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set("Authorization", tokenStr);
 

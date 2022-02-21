@@ -14,7 +14,7 @@ export class UsersService {
 
 
   getUserById(id: number, token: any) {
-    console.log("***TOKEN*** " + token)
+    // console.log("***TOKEN*** " + token)
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set("Authorization", tokenStr);
 
@@ -22,7 +22,7 @@ export class UsersService {
     return this.http.get(this.url + "/" + id, { headers });
   }
   getUserByName(name: string, token: any) {
-    console.log("***TOKEN*** " + token)
+    // console.log("***TOKEN*** " + token)
     const tokenStr = 'Bearer ' + token;
     const headers = new HttpHeaders().set("Authorization", tokenStr);
 
