@@ -4,6 +4,7 @@ import { MovielistService } from '../movielist.service';
 import { AuthService } from '../auth.service';
 import { UsersService } from '../users.service';
 import { UsermoviesService } from '../usermovies.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var window: any;
 
@@ -45,7 +46,7 @@ export class MovieListComponent implements OnInit {
   // public final: any = {};
   public formModal: any;
 
-  constructor(private movieListService: MovielistService, public authService: AuthService, public userService: UsersService, public usermovies: UsermoviesService) {
+  constructor(private movieListService: MovielistService, public authService: AuthService, public userService: UsersService, public usermovies: UsermoviesService, private router: Router, private route: ActivatedRoute) {
 
   }
 
@@ -354,6 +355,11 @@ export class MovieListComponent implements OnInit {
       complete: () => (console.log("Completed del")) //
     });
 
+
+    this.router.navigate(["/myprogress"])
+      .then(() => {
+        window.location.reload();
+      });
 
 
   }

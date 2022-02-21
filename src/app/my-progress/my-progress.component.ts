@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { MovielistService } from '../movielist.service';
 import { UsermoviesService } from '../usermovies.service';
@@ -36,14 +38,25 @@ export class MyProgressComponent implements OnInit {
 
   displayCalculatedVal = this.calculateSpinnerPercentage;
 
-  constructor(public authService: AuthService, private movieListService: MovielistService, private usersMovieService: UsermoviesService, public userService: UsersService) { }
+  constructor(public authService: AuthService, private movieListService: MovielistService, private usersMovieService: UsermoviesService, public userService: UsersService, private router: Router) { }
   // able to pull in users movies, use for loop to check movielist.id == userid 
 
   ngOnInit(): void {
     this.value = localStorage.getItem('profanis_auth');
     this.userName = localStorage.getItem('admin');
     this.reloadMovieData();
+
+    // this.router.events.pipe(
+    //   filter((event) => event instanceof NavigationEnd)
+    // ).subscribe(() => {
+    //   this.reloadMovieData();
+
+    // });
+
   }
+
+
+
   checks: boolean = false;
   reloadMovieData() {
 
