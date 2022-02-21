@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.authService
         .login(this.username, this.password)
         .subscribe((res) => {
-          console.log("*** AFTER CLICKING LOGIN BUTTON ***" + res)
+          // console.log("*** AFTER CLICKING LOGIN BUTTON ***" + res)
           this.router.navigate(['/home']);
         })
 

@@ -17,6 +17,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { MyProgressComponent } from './my-progress/my-progress.component';
 
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 
 @NgModule({
   declarations: [

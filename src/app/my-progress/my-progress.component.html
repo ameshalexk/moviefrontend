@@ -47,3 +47,11 @@
     </mat-action-row>
 </mat-expansion-panel>
 </mat-accordion>
+
+    <div *ngFor="let u of usersMovie">
+      <p>{{u.id}}</p>
+      <p>{{u.progress}}</p>
+      <p>{{u.movie_id}}</p>
+      <p>{{u.user_id}}</p>
+    </div>
+

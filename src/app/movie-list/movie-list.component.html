@@ -10,6 +10,8 @@
           <th>Description</th>
           <th>Genre</th>
           <th>Release Year</th>
+          <th>Add to watchlist</th>
+          <th>Progress</th>
         </tr>
       </thead>
 
@@ -20,12 +22,21 @@
           <td>{{m.description}}</td>
           <td>{{m.genre}}</td>
           <td>{{m.publishedYear}}</td>
-
-
+          <!-- <td> 
+            <input type="checkbox" name={{m.id}} #isChecked (click)="onChecked(isChecked)"> 
+          </td> 
+          <td>
+            <ng-container *ngIf="selected[m.id - 1]">anything</ng-container>
+            <!-- 3 radio buttons (completed, in progress, not started), ngModel track a variable string  -->
+          <!-- </td> --> -->
         </tr>
       </tbody>
 
     </table>
+      <td> 
+        <!-- <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate></form> -->
+        <input type="submit" value="Submit">
+      </td>
 
   </div>
 </div>
