@@ -184,18 +184,29 @@ export class MovieListComponent implements OnInit {
 
               console.log(this.checkedVal)
 
-              this.usermovies.addUserMovie(obj, this.value).subscribe({
-                next: (response) => {
-                  // console.log("*** usermovies RESPONSE *** : " + response)
-                  // console.log(val[i])
+              // this.usermovies.addUserMovie(obj, this.value).subscribe({
+              //   next: (response) => {
+              //     // console.log("*** usermovies RESPONSE *** : " + response)
+              //     // console.log(val[i])
 
-                }, // succeeds
-                error: (error) => { console.log(error) }, // fails
-                // complete: () => (console.log("Completed")) //
-              });
+
+
+              //   }, // succeeds
+              //   error: (error) => { console.log(error) }, // fails
+              //   // complete: () => (console.log("Completed")) //
+              // });
             }, // succeeds
             error: (error) => { console.log(error) }, // fails
-            // complete: () => (console.log("Completed")) //
+            complete: () => {
+
+              this.usermovies.deleteUserMovieById(response.id, this.value).subscribe({
+                next: (response) => {
+                  console.log("******deleted*******" + response);
+                },
+                error: (error) => { console.log(error) }
+              })
+
+            } //
           });
 
 
@@ -279,6 +290,7 @@ export class MovieListComponent implements OnInit {
     // console.log(val)
 
 
+
     this.userService.getUserByName(this.usernameValue, this.value).subscribe({
       next: (response) => {
         // console.log("*** USER RESPONSE *** : " + response)
@@ -286,53 +298,64 @@ export class MovieListComponent implements OnInit {
         console.log(response)
         let idVal: any = response;
 
-
         this.usermovies.deleteUserMovieById(idVal.id, this.value).subscribe({
           next: (response) => {
             console.log("******deleted*******" + response);
           },
           error: (error) => { console.log(error) }
         })
+
+
+
+        for (let i = 0; i < val.length; i++) {
+          // let obj: any = {};
+          // obj['movie'] = val[i];
+          console.log(val)
+          // this.userService.getUserByName(this.usernameValue, this.value).subscribe({
+          //   next: (response) => {
+          //     // console.log("*** USER RESPONSE *** : " + response)
+          //     // this.selected.push(response)
+          //     console.log(response)
+          //     obj['user'] = response;
+          //     let a = this.checkedVal.split('%')
+          //     // console.log(a[0])
+          //     obj['progress'] = a[0];
+
+          //     console.log(this.checkedVal)
+
+
+
+
+
+          this.usermovies.addUserMovie(val[i], this.value).subscribe({
+            next: (response) => {
+              // console.log("*** usermovies RESPONSE *** : " + response)
+              console.log(response)
+
+
+
+            }, // succeeds
+            error: (error) => { console.log(error) }, // fails
+            complete: () => {
+              (console.log("Completed add"))
+            } //
+          });
+          // }, // succeeds
+          // error: (error) => { console.log(error) }, // fails
+          // complete: () => (console.log("Completed")) //
+          // });
+          // console.log(this.final)
+          // console.log(val)
+          const { movie, ...rest } = val;
+        }
+
       }, // succeeds
       error: (error) => { console.log(error) }, // fails
-      // complete: () => (console.log("Completed")) //
+      complete: () => (console.log("Completed del")) //
     });
 
 
-    for (let i = 0; i < val.length; i++) {
-      // let obj: any = {};
-      // obj['movie'] = val[i];
-      console.log(val)
 
-      // this.userService.getUserByName(this.usernameValue, this.value).subscribe({
-      //   next: (response) => {
-      //     // console.log("*** USER RESPONSE *** : " + response)
-      //     // this.selected.push(response)
-      //     console.log(response)
-      //     obj['user'] = response;
-      //     let a = this.checkedVal.split('%')
-      //     // console.log(a[0])
-      //     obj['progress'] = a[0];
-
-      //     console.log(this.checkedVal)
-
-      this.usermovies.addUserMovie(val[i], this.value).subscribe({
-        next: (response) => {
-          // console.log("*** usermovies RESPONSE *** : " + response)
-          console.log(response)
-
-        }, // succeeds
-        error: (error) => { console.log(error) }, // fails
-        // complete: () => (console.log("Completed")) //
-      });
-      // }, // succeeds
-      // error: (error) => { console.log(error) }, // fails
-      // complete: () => (console.log("Completed")) //
-      // });
-      // console.log(this.final)
-      // console.log(val)
-      const { movie, ...rest } = val;
-    }
   }
 
   getUserId() {
